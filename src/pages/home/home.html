@@ -1,14 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Calculator
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+    <ion-input [(ngModel)]="numero" placeholder=" introduce un numero"></ion-input>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button (click)="tabla(numero)"  >tabla</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="divisores(numero)">divisores</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list *ngIf="!opcion">
+      <ion-item  *ngFor=" let tab of tablas; index as i ">
+          {{numero}} * {{i}} = {{tab}}
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="opcion">
+      <ion-item  *ngFor=" let div of divisor ">
+          {{div}}
+      </ion-item>
+    </ion-list>
+
+    
 </ion-content>
